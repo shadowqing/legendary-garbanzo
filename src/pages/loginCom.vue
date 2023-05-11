@@ -1,6 +1,6 @@
 <template>
     <div id="login_content">
-        <video loop="loop" muted="muted" autoplay="autoplay"  src="../video/潮点网_64041 2.mp4" style="width:100%"></video>
+        <video Loop="loop" muted="muted" autoplay="autoplay"  src="../video/潮点网_64041 2.mp4" style="width:100%"></video>
 
         <h1>欢迎来到仙剑世界!</h1>
 
