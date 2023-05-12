@@ -4,7 +4,7 @@
 
         <h1>欢迎来到仙剑世界!</h1>
 
-        <!-- form盒子 -->
+        <!-- form大盒子 -->
         <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="80px" class="demo-ruleForm">
             <!-- 用户名 -->
             <el-form-item label="用&ensp;户&ensp;名" prop="user" class="login">
