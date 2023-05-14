@@ -1,20 +1,21 @@
-import {createRouter,createWebHashHistory} from 'vue-router'
+import { createRouter, createWebHashHistory } from "vue-router"
 
-let routes=[
+let routes = [
     {
-        path:'/login',
-        component:()=>import('../pages/loginCom.vue')
-    },
-    {
-        path:'/home',
-        component:()=>import('../pages/homeCom.vue')
+        path: "/home",
+        component: ()=>import("../pages/home.vue"),
     },
 
+    {
+        path: "/login",
+        component: () => import("../pages/login.vue")
+    },
+    
 ]
 
-let router=createRouter({
+let router = createRouter({
     routes,
-    history:createWebHashHistory()
+    history: createWebHashHistory()
 })
 
-export default router
+export default router;
