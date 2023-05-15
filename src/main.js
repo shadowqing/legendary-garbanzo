@@ -10,7 +10,8 @@ import { styleType } from 'element-plus/es/components/table-v2/src/common'
 //引入element
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
+//引入css
+import './assets/css/common.css'
 //引入进度条
 import 'nprogress/nprogress.css'
 

@@ -1,4 +1,5 @@
 <template>
+    <router-view></router-view>
     <div class="common-layout">
 
         <el-container class="list">
@@ -77,7 +78,7 @@ onMounted(() => {
         // console.log(listView.value);
     })
 
-    let { userInfo} = store
+    let { userInfo } = store
     // headimgurl.value=userInfo.value.headimgurl
     // nickname.value=userInfo.value.nickname
     // console.log(userInfo);
@@ -85,25 +86,24 @@ onMounted(() => {
     // console.log(nickname);
     nick.value = nickname
     headimg.value = headimgurl
-
-
-
 })
 
 let vHas = {
-    mounted(el,binding){
+    mounted(el, binding) {
         // console.log(binding);
-        let {  permission } = store
+        let { permission } = store
         // console.log(permission);
         //获取permission
         let { value: { buttons } } = permission
         // console.log(buttons);
-        let res =buttons.includes(binding.arg)
+        let res = buttons.includes(binding.arg)
         console.log(res);
-        if(!res){
+        if (!res) {
             el.disabled = true
         }
     }
+
+
 }
 let quit = () => {
     sessionStorage.setItem('tk', '')
@@ -164,11 +164,13 @@ let quit = () => {
     text-align: center;
     line-height: 160px;
 }
-.el-main button{
-    width: 50px;
-    height: 30px;
+
+.el-main button {
+    width: 46px;
+    height: 26px;
     margin-right: 5px;
 }
+
 .el-main table {
     border: 1px solid #e6e6e6;
     width: 100%;

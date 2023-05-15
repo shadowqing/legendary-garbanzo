@@ -47,29 +47,28 @@ onMounted(() => {
   getCaptcha()
 
 })
-let flag=ref(false)
+let flag = ref(false)
 //拿取展示验证码
 let getCaptcha = async () => {
   try {
     //动画
-    flag.value=true
+    flag.value = true
 
 
     let res = await api.axiosCaptcha()
     console.log(res);
     axiosCaptcha.value = res.data.img
     //关闭动画
-    flag.value=false
+    flag.value = false
   } catch (e) {
     console.log(e);
     //关闭动画
-    flag.value=false
+    flag.value = false
   }
 }
 
 //表单数据，拿到ruleForm
 const ruleFormRef = ref()
-
 
 
 //验证用户名方法
@@ -85,10 +84,7 @@ const validateUsername = (rule, value, callback) => {
 }
 //验证密码方法
 const validatePassword = (rule, value, callback) => {
-  let reg = /^[a-zA-Z]{1,9}$/
-  let res = reg.test(value)
-  // console.log(res);
-  if (res) {
+  if (value) {
     callback()
   } else {
     callback(new Error("请输入1-9位的数字组合"))
@@ -210,6 +206,11 @@ const submit = (formEl) => {
   z-index: -1;
   width: 100%;
   height: 100%;
+  position:fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .demo-ruleForm {

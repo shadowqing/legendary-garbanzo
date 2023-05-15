@@ -5,27 +5,27 @@ import axios from 'axios'
 import nProgress from 'nprogress'
 
 
-let http=axios.create({
-    baseURL:'/api',
-    timeout:1000*10
+let http = axios.create({
+    baseURL: '/api',
+    timeout: 1000 * 10
 })
 
-http.interceptors.request.use(config=>{
+http.interceptors.request.use(config => {
     //进度条
     nProgress.start()
     // console.log(config);
-    let token=sessionStorage.getItem('tk')
-    config.headers.authorization=token
+    let token = sessionStorage.getItem('tk')
+    config.headers.authorization = token
     return config
 })
 
-http.interceptors.response.use(config=>{
+http.interceptors.response.use(config => {
     //进度条
     nProgress.done()
-    if(config.data.state){
+    if (config.data.state) {
         return config
-    }else{
-       return Promise.reject(config.data.state)
+    } else {
+        return Promise.reject(config.data.state)
     }
     return config
 })
