@@ -1,6 +1,6 @@
 <template>
   <div id="contain">
-    <video src="../video/预览视频.mp4" muted loop autoplay></video>
+    <video src="../video/预览视频.mp4" muted loop autoplay id="video"></video>
     <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="120px" class="demo-ruleForm">
       <!-- 用户名 -->
       <el-form-item label="用&ensp;户&ensp;名" prop="username">
@@ -37,10 +37,11 @@ import { ElLoading } from 'element-plus'
 
 
 
-
 let router = useRouter()
 let store = useStore()
 
+
+//请求验证码
 let axiosCaptcha = ref('')
 onMounted(() => {
   // console.log(api);
@@ -53,8 +54,6 @@ let getCaptcha = async () => {
   try {
     //动画
     flag.value = true
-
-
     let res = await api.axiosCaptcha()
     console.log(res);
     axiosCaptcha.value = res.data.img
@@ -66,6 +65,8 @@ let getCaptcha = async () => {
     flag.value = false
   }
 }
+
+
 
 //表单数据，拿到ruleForm
 const ruleFormRef = ref()
@@ -94,9 +95,6 @@ const validatePassword = (rule, value, callback) => {
 
 //验证验证码方法
 const validateCaptcha = async (rule, value, callback) => {
-  // console.log(value);
-
-  // console.log(res);
   if (value) {
     ruleForm.captcha = value
     callback()
@@ -104,6 +102,9 @@ const validateCaptcha = async (rule, value, callback) => {
     callback(new Error("请输入验证码"))
   }
 }
+
+
+
 // ----------------------------------------------------------------
 //获取输入数据
 const ruleForm = reactive({
@@ -118,10 +119,6 @@ const rules = reactive({
   password: [{ validator: validatePassword, trigger: 'blur' }],
   captcha: [{ validator: validateCaptcha, trigger: 'blur' }],
 })
-//封装登录请求
-// let getLogin = async () => {
-
-// }
 
 
 //登录
@@ -202,10 +199,10 @@ const submit = (formEl) => {
   height: 100%;
 }
 
-#contain video {
-  z-index: -1;
-  width: 100%;
-  height: 100%;
+#contain #video {
+  /* z-index: -1; */
+  /* width: 100%;
+  height: 100%; */
   position:fixed;
   left: 0;
   right: 0;
@@ -229,6 +226,7 @@ const submit = (formEl) => {
   flex-direction: column;
   align-items: center;
   color: #fff;
+  z-index: 9;
 }
 
 
@@ -272,4 +270,6 @@ const submit = (formEl) => {
 :deep(.el-form-item__error) {
   color: #eef56c
 }
+
+
 </style>

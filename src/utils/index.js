@@ -27,7 +27,6 @@ http.interceptors.response.use(config => {
     } else {
         return Promise.reject(config.data.state)
     }
-    return config
 })
 
 export default http

@@ -50,6 +50,7 @@ let quit = () => {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .el-header #usermsg{
